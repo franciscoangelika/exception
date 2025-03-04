@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+
+
+struct MyException : public exception{
+    const char* what () const throw {
+        return "ERROR";
+    }
+};
+    double division (double a, double b){
+    if (a!= 0 && b==0){
+        throw "zero division error";
+    }
+    else if ( b == 3){
+        throw " an error occured";
+    }
+    else if ( a = 0 && b ==0){
+        throw 404;
+    }
+    return (a/b);
+}
+int main (){
+    try { 
+        int num1 = 0, num2 = 0;
+        cerr << division (num1, num2) <<endl;
+    }
+    catch (const char*  msg){
+        cerr << msg << endl;
+    }
+    catch (MyException & e){
+        cout << e.what() << endl;
+    } 
+    catch (int x){
+        cerr << x << endl;
+    }
+    return 0;
+}
